@@ -2,7 +2,7 @@
  Simple Laravel Implementation on Contact App Faker
 
 ## How to clone repository:
-1. Clone this repository 
+1. Clone this repository and put project in your document root path
     ```
     git clone https://github.com/oujirate/contactAppFaker.git
     ```
@@ -27,8 +27,7 @@
     ```
     npm install
     ```
-9. If you use laragon, run project in www->contactAppFaker (put your project in your document root path)
-10. Run npm
+9. Run npm
     ```
     npm run dev
     ```
