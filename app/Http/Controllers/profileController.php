@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 
-class profileController extends Controller
+class ProfileController extends Controller
 {
     public function profile() {
         $username = Session::get('username');

@@ -11,15 +11,17 @@
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     <title>@yield('title')</title>
 </head>
-<body>
-    @if (!request()->routeIs('login','register'))
-        @include('layouts.header')
-    @endif
+    <body class="min-h-screen flex flex-col">
+        @if (!request()->routeIs('login','register'))
+            @include('layouts.header')
+        @endif
 
-    @yield('content')
+        <main class="flex-grow bg-gray-100">
+            @yield('content')
+        </main>
 
-    @if (!request()->routeIs('login','register'))
-        @include('layouts.footer')
-    @endif
+        @if (!request()->routeIs('login','register'))
+            @include('layouts.footer')
+        @endif
     </body>
 </html>

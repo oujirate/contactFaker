@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Session;
 
 use Illuminate\Http\Request;
 
-class authController extends Controller
+class AuthController extends Controller
 {
     public function showLogin() {
         return view('auth.login');

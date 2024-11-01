@@ -6,16 +6,21 @@ use App\Http\Controllers\profileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
-Route::get('/',[homeController::class,'home'])->name('home');
+Route::get('/',[HomeController::class,'home'])->name('home');
 
-Route::get('/login',[authController::class,'showLogin'])->name('login');
-Route::post('/login',[authController::class,'login']);
+Route::get('/login',[AuthController::class,'showLogin'])->name('login');
+Route::post('/login',[AuthController::class,'login']);
 
-Route::get('/register',[authController::class,'showRegister'])->name('register');
-Route::post('/register',[authController::class,'register']);
+Route::get('/register',[AuthController::class,'showRegister'])->name('register');
+Route::post('/register',[AuthController::class,'register']);
 
-Route::get('/logout',[authController::class,'logout'])->name('logout');
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
-Route::get('/contacts',[contactController::class,'contacts'])->name('contacts');
+Route::prefix('/contact')->name('contact.')->group(function(){
+    Route::get('/',[ContactController::class,'index'])->name('index');
+    Route::get('/create',[ContactController::class,'create'])->name('create');
+    Route::post('/store',[ContactController::class,'store'])->name('store');
+});
 
-Route::get('/profile',[profileController::class,'profile'])->name('profile');
+Route::get('/profile',[ProfileController::class,'profile'])->name('profile');
+

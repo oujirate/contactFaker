@@ -2,31 +2,78 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactModel;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Faker\Factory as Faker;
-use Illuminate\Support\Facades\Session;
 
-
-class contactController extends Controller
+class ContactController extends Controller
 {
-    public function contacts() {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $contacts = ContactModel::all();
 
-        if (!Session::has('username')) {
-            return redirect()->route('login');
-        }
-
-        $faker = Faker::create();
-
-        for ($i=0; $i<50; $i++){
-            $contacts[] = [
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'address' => $faker->address,
-                'notelp' => $faker->phoneNumber,
-                'company' => $faker->company,
-            ];
-        }
 
         return view('pages.contacts.index',compact('contacts'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('pages.contacts.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $data = [
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "address" => $request->address,
+            "company" => $request->company,
+        ];
+
+        ContactModel::create($data);
+
+        return redirect()->route('contact.index');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }
